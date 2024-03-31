@@ -1,11 +1,16 @@
 import express from "express";
+import {dirname} from "path";
+import { fileURLToPath } from "url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// JSON that contains all data necessary
+import artists from "./data.js";
 
 const app = express();
 const port = 8080;
 
 app.get("/", (req, res) => {
-    console.log(req);
-    res.send("<h1>Hello World</h1>");
+  res.sendFile(__dirname + "/index.html");
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}...`));
