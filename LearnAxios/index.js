@@ -16,10 +16,10 @@ app.get("/", async (req, res) => {
 app.post("/", async (req, res) => {
   try {
     const type = req.body.type;
-    const response = axios.get(
+    const response = await axios.get(
       `https://bored-api.appbrewery.com/filter?type=${type}`
     );
-    var data = (await response).data;
+    var data = response.data;
     res.send(data[0].activity);
   } catch (error) {
     console.error("Failed to make request :", error.message);
