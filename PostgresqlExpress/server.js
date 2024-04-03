@@ -1,23 +1,30 @@
 import express from "express";
 import dotenv from "dotenv";
-import pkg from "pg"; // Import the entire pg package
+import pg from "pg";
 
 dotenv.config();
 
-const { Client } = pkg; // Destructure the Client object from the pg package
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const db = new Client({
-    user: "ragulb",
-    host: "localhost",
-    database: "myloginapp",
-    password: "password",
-    port: 5432
+const db = new pg.Client({
+  user: "postgres",
+  host: "localhost",
+  database: "myloginapp",
+  password: "password",
+  port: 5432,
 });
 
 db.connect();
 
+db.query("SELECT * from users", (err, res) => {
+  if (err) console.error(err.error);
+  else {
+    var rows = res.rows;
+    console.log(rows[0].name);
+  }
+});
+
 app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
+  console.log(`Listening on port ${PORT}`);
 });
