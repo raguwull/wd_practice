@@ -17,12 +17,13 @@ const db = new pg.Client({
 
 db.connect();
 
-db.query("SELECT * from users", (err, res) => {
-  if (err) console.error(err.error);
-  else {
-    var rows = res.rows;
-    console.log(rows[0].name);
-  }
+app.get("/", async (req, res) => {
+  const result = await db.query(
+    "SELECT name, age from users where age > $1 and name = $2",
+    [18, "Ragul"]
+  );
+  console.log(result.rows);
+  res.send(result.rows);
 });
 
 app.listen(PORT, () => {
