@@ -2,6 +2,7 @@
 *.txt
 
 # FOLDERS
+ZTrash/
 node_modules/
 LearnReact/
 

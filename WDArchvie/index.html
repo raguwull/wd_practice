@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+    @keyframes example{
+        from {background-color: red;}
+        to {background-color: rgb(20, 255, 200);}
+      }
+    #hello {
+        background-color: red;
+        animation-name: example;
+        animation-delay: 0.2s;
+      }
+      
+    </style>
+  </head>
+  <body id="main">
+    <a href="#pre-tag4">Pre</a>
+    <ol id="list">
+      <li>Pughal</li>
+      <li>Raghul Yadhav</li>
+      <li>Ragul</li>
+      <li>Rajasekar</li>
+    </ol>
+
+    <p id="output">Your output will be displayed here</p>
+
+    <pre id="pre-tag">
+        Hi sagar    !!
+        what a sudden suppai!
+        <br/>
+        Yes 
+        Its a suddan suppai for me too
+        d
+        .
+
+    </pre>
+
+    <table border="5" cellpadding="5" cellspacing="5">
+      <caption>
+        COSC 400 Student Grades
+      </caption>
+      <tr>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th colspan="2">Grades</th>
+      </tr>
+      <tr>
+        <th>&nbsp;</th>
+        <th>Student</th>
+        <th>Exam 1</th>
+        <th>Exam 2</th>
+      </tr>
+      <tr>
+        <th rowspan="2">Undergraduates</th>
+        <th>Kim</th>
+        <td><input /></td>
+        <td>98</td>
+      </tr>
+    </table>
+
+    <br />
+
+    <form>
+      <div>
+        <label>
+          Enter your name:
+          <input type="text" name="name" autofocus />
+        </label>
+        <br />
+        <label>
+          <input type="radio" name="name" value="" />
+          Honey
+        </label>
+        <br />
+        <label>
+          <input type="checkbox" name="name" value="Sugar" />
+          Sugar
+        </label>
+        <br />
+        <input type="submit" name="name" value="Submit" />
+      </div>
+    </form>
+
+    <select>
+      <option>10</option>
+      <option>20</option>
+      <option>30</option>
+    </select>
+
+    <h1 id="hello">Hello world</h1>
+
+    <script>
+      var names = document.getElementsByTagName("li");
+
+      var newName = document.createElement("li");
+      newName.innerHTML = "Rayhan";
+      newName.style.color = "cyan";
+
+      var parent = document.getElementById("list");
+      parent.appendChild(newName);
+
+      for (var i = 0; i < names.length; i++) {
+        //console.log(names[i].innerHTML);
+
+        if (names[i].innerHTML.includes("Rayhan")) {
+          console.log(names[i].innerHTML);
+          document.getElementById("list").removeChild(names[i]);
+        }
+      }
+
+      var exp = "3 + 3";
+      var out = eval(exp);
+
+      out = "<h1> Hello world </h1>";
+
+      document.getElementById("output").innerHTML = out;
+    </script>
+  </body>
+</html>

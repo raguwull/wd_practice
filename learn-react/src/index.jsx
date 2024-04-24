@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
+import SummApp from "./components/SummApp";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<SummApp />, document.getElementById("root"));

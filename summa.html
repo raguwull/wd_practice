@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Country Autocomplete</title>
+</head>
+<body>
+    <input type="text" id="countryInput" oninput="fetchCountries(this.value)">
+    <div id="countryList"></div>
+
+    <script>
+        function fetchCountries(input) {
+            var xhr = new XMLHttpRequest();
+            var url = "https://restcountries.com/v2/name/" + input;
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        displayCountries(response);
+                    } else {
+                        console.error('Error:', xhr.status);
+                    }
+                }
+            };
+
+            xhr.open("GET", url);
+            xhr.send();
+        }
+
+        function displayCountries(countries) {
+            var dropdown = document.createElement("select");
+            countries.forEach(function(country) {
+                var option = document.createElement("option");
+                option.text = country.name;
+                dropdown.add(option);
+            });
+            document.getElementById("countryList").innerHTML = "";
+            document.getElementById("countryList").appendChild(dropdown);
+        }
+    </script>
+</body>
+</html>
